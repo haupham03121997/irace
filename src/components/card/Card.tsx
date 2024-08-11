@@ -42,7 +42,7 @@ const Card: React.FC<CardProps> = ({
           {isHot && <Image src={HotImage} alt="hot" fill sizes="auto" className="object-cover" priority />}
         </div>
       )}
-      <div className="w-full h-[175px] relative">
+      <div className="w-full h-[175px] relative rounded-t-md overflow-hidden">
         <Image src={image} alt={title} fill sizes="auto" className="object-cover" priority />
       </div>
       <div className="p-5">
