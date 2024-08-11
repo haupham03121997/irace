@@ -1,0 +1,16 @@
+/* Custom dropdown menu under screen mobile */
+.accordion-menu h3 {
+  display: block;
+}
+.accordion-menu .custom-accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Hide the default dropdown icon */
+  &::after {
+    display: none;
+  }
+  svg:nth-child(2) {
+    display: none;
+  }
+}
