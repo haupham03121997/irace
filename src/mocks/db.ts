@@ -1,3 +1,5 @@
+import { CurrentUser } from "@/interfaces/auth";
+
 export const eventData: { [key: string]: any } = {
   offline: [
     {
@@ -213,4 +215,32 @@ export const eventData: { [key: string]: any } = {
         "https://irace-web.s3.ap-southeast-1.amazonaws.com/photos/race/2024/03/26/race-konnit-fast-n-fun-virtual-ride-21km-challenge-image.png?v=134933?0.7902515595310322",
     },
   ],
+};
+
+export const userLogin: CurrentUser = {
+  message: {
+    typed: 0,
+    text: "Thành công",
+    code: "00000",
+    title: "",
+  },
+  roles: [],
+  list: [
+    {
+      userName: "admin",
+      fullName: "tran minh sang sáng",
+      nu0Nam1: 1,
+      mobile: "0966385817",
+      diaChi: "123 Man Thien, Quan 9, TP.HCM",
+      email: "admin@gmail.com",
+      userStatusNext: [
+        {
+          statusCode: "D",
+          statusName: "xóa user",
+        },
+      ],
+    },
+  ],
+  total: 0,
+  token: "",
 };

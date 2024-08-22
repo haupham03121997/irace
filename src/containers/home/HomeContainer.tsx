@@ -5,7 +5,7 @@ import OpeningEvents from "./OpeningEvents";
 
 const HomeContainer: React.FC = () => {
   return (
-    <section className="flex min-h-screen container  md:px-2 lg:px-4">
+    <section className="flex min-h-screen container px-0 md:px-2 lg:px-4">
       <div className="w-full flex flex-col gap-6">
         <OpeningEvents />
         <OfflineEvents />

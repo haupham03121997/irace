@@ -6,5 +6,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function randomTime() {
-  return Math.floor(Math.random() * 1000) + 2500;
+  return Math.floor(Math.random() * 1000) + 1000;
 }

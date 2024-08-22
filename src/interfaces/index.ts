@@ -15,3 +15,13 @@ export interface ISocial {
   icon: any;
   key: string;
 }
+
+export interface Field {
+  fieldName: string;
+  label: string;
+  placeholder?: string;
+  type: "input" | "select" | "textarea" | "date";
+  rows?: number;
+  required?: boolean;
+  options?: { label: string; value: string }[];
+}

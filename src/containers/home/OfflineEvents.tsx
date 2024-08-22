@@ -1,17 +1,26 @@
-"use client";
 import React from "react";
 
 import Card from "@/components/card/Card";
 import SectionWrapper from "@/components/section-wrapper/SectionWrapper";
 
-import { useOfflineEvents } from "@/app/queries/useOfflineEvents";
+import { eventApi } from "@/apis/events";
 import ImageDummy from "@/assets/images/event.jpeg";
 import { SkeletonCard } from "@/components/skeleton";
 import { Button } from "@/components/ui/button";
+import { IEvent } from "@/interfaces";
 import { convertCurrencyVN } from "@/utils";
 
-const OfflineEvents: React.FC = () => {
-  const { data, isFetching } = useOfflineEvents("offline");
+const OfflineEvents: React.FC = async () => {
+  let data: IEvent[] = [];
+  let isFetching = false;
+  try {
+    isFetching = true;
+    const response = await eventApi.getOfflineEvents();
+    data = response || [];
+  } catch (error) {
+  } finally {
+    isFetching = false;
+  }
 
   return (
     <SectionWrapper title="SỰ KIỆN OFFLINE" btnText="Xem tất cả" hrefViewAll="#">

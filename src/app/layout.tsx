@@ -34,10 +34,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </Head>
-      <body
-        className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}
-        suppressHydrationWarning
-      >
+      <body className={cn("min-h-screen font-sans antialiased", fontSans.variable)} suppressHydrationWarning>
         <AppProvider>{children}</AppProvider>
       </body>
     </html>

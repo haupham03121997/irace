@@ -10,15 +10,24 @@ class HttpError extends Error {
   }
 }
 
+export const isClient = () => typeof window !== "undefined";
+
 const request = async <Response>(
   method: "GET" | "POST" | "PUT" | "DELETE",
   url: string,
   option?: CustomOptions | undefined
 ) => {
   const body = option?.body ? JSON.stringify(option.body) : undefined;
-  const baseHeaders = {
+  const baseHeaders: { [key: string]: string } = {
     "Content-Type": "application/json",
   };
+
+  if (isClient()) {
+    const token = localStorage.getItem("token");
+    if (token) {
+      baseHeaders["Authorization"] = `Bearer ${token}`;
+    }
+  }
 
   const baseUrl = option?.baseUrl || process.env.NEXT_PUBLIC_API_END_POINT;
 

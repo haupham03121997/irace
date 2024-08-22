@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <div>{children}</div>;
+import { AuthLayout } from "@/layouts/AuthLayout";
+
+export default function RootAuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <AuthLayout>{children}</AuthLayout>;
 }

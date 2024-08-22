@@ -9,7 +9,7 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div>
+    <div className="bg-background">
       <Header />
       <div className="pt-[86px] md:pt-[92px]">{children}</div>
       <Footer />
