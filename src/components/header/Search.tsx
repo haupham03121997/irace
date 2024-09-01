@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useDebounce } from "@uidotdev/usehooks";
-import { Search as SearchIcon } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+import { useDebounce } from '@uidotdev/usehooks';
+import { Search as SearchIcon } from 'lucide-react';
+import Link from 'next/link';
+import React from 'react';
 
-import { Accordion, AccordionContent, AccordionItem } from "@/components/ui/accordion";
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/libs/utils";
+import { Accordion, AccordionContent, AccordionItem } from '@/components/ui/accordion';
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { cn } from '@/libs/utils';
 
 const Search: React.FC = () => {
-  const [showSearch, setShowSearch] = React.useState("result");
-  const [searchValue, setSearchValue] = React.useState("");
+  const [showSearch, setShowSearch] = React.useState('result');
+  const [searchValue, setSearchValue] = React.useState('');
 
   const debouncedSearchValue = useDebounce(searchValue, 300);
 
@@ -21,14 +21,14 @@ const Search: React.FC = () => {
   };
 
   React.useEffect(() => {
-    setShowSearch(debouncedSearchValue ? "result" : "");
+    setShowSearch(debouncedSearchValue ? 'result' : '');
   }, [debouncedSearchValue]);
 
   return (
     <div className=" cursor-pointer ">
       <Dialog
         onOpenChange={(open) => {
-          if (!open) setSearchValue("");
+          if (!open) setSearchValue('');
         }}
       >
         <DialogTrigger asChild>
@@ -43,9 +43,9 @@ const Search: React.FC = () => {
           <DialogTitle></DialogTitle>
           <Input
             placeholder="Tìm sự kiện"
-            className="border-none py-6 pr-3 pl-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:ring-offset-transparent shadow-card text-base "
+            className="border-none py-6 px-3 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:ring-offset-transparent shadow-card text-base "
             startAdornment={
-              <div className="flex items-center justify-center px-3">
+              <div className="flex items-center justify-center">
                 <SearchIcon size={18} className="stroke-secondary" />
               </div>
             }
@@ -58,7 +58,7 @@ const Search: React.FC = () => {
           />
 
           <Accordion type="single" collapsible value={showSearch}>
-            <AccordionItem value="result" className={cn("border-b-0")}>
+            <AccordionItem value="result" className={cn('border-b-0')}>
               <AccordionContent>
                 <div className="shadow-header h-[3px] mb-4"></div>
                 <div>

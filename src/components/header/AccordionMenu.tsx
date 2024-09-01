@@ -1,7 +1,7 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Menu as MenuIcon } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Menu as MenuIcon } from 'lucide-react';
+import Link from 'next/link';
+import React from 'react';
 
 const AccordionMenu: React.FC = () => {
   return (
@@ -14,7 +14,9 @@ const AccordionMenu: React.FC = () => {
           <AccordionContent className="pb-0">
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="w-full px-4 text-base no-underline">Mua Vé Sự Kiện</AccordionTrigger>
+                <AccordionTrigger className="w-full px-4 text-base no-underline">
+                  Mua Vé Sự Kiện
+                  </AccordionTrigger>
                 <AccordionContent className="pl-4">
                   <div className="flex flex-col">
                     <Link href="#" className="py-2 px-4 text-gray-500">

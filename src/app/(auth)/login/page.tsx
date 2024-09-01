@@ -1,14 +1,14 @@
-"use client";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
+'use client';
+import Link from 'next/link';
+import { useForm } from 'react-hook-form';
 
-import { authApi } from "@/apis/auth";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { useAuthStore } from "@/stores/useAuthStore";
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { authApi } from '@/apis/auth';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { useAuthStore } from '@/stores/useAuthStore';
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 
 interface LoginForm {
   email: string;
@@ -18,8 +18,8 @@ interface LoginForm {
 export default function LoginPage() {
   const { handleSubmit, register, watch } = useForm<LoginForm>({
     defaultValues: {
-      email: "admin123",
-      password: "admin123",
+      email: 'admin123',
+      password: 'admin123',
     },
   });
 
@@ -31,12 +31,12 @@ export default function LoginPage() {
     mutationFn: (payload: LoginForm) => authApi.login(payload),
     onSuccess: (currentUser) => {
       setUser(currentUser);
-      router.push("/");
+      router.push('/');
     },
   });
 
-  const email = watch("email");
-  const password = watch("password");
+  const email = watch('email');
+  const password = watch('password');
 
   const onSubmit = (data: LoginForm) => {
     handleLogin(data);
@@ -47,12 +47,12 @@ export default function LoginPage() {
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-8">
           <Input
-            {...register("email")}
+            {...register('email')}
             className="py-6 focus:outline-none focus-visible:ring-0 text-base"
             placeholder="Email/Username"
           />
           <Input
-            {...register("password")}
+            {...register('password')}
             type="password"
             className="py-6 focus:outline-none focus-visible:ring-0 text-base"
             placeholder="Mật khẩu"
@@ -82,7 +82,7 @@ export default function LoginPage() {
           </Button>
           <div>
             <p className="text-center text-gray-500 text-base">
-              Bạn chưa có tài khoản?{" "}
+              Bạn chưa có tài khoản?{' '}
               <Link href="/register" className="text-primary underline font-semibold">
                 Đăng ký ngay
               </Link>

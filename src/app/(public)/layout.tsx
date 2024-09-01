@@ -1,6 +1,7 @@
 import React from "react";
 
-import { MainLayout } from "@/layouts/MainLayout";
+import { MainLayout } from "@/layouts";
+
 
 export default function RootMainLayout({
   children,

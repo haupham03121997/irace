@@ -1,6 +1,7 @@
-import { CurrentUser } from "@/interfaces/auth";
-import { getLocalStorage, removeLocalStorage, setLocalStorage } from "@/utils";
-import { create } from "zustand";
+import { create } from 'zustand';
+
+import { CurrentUser } from '@/interfaces/auth';
+import { getLocalStorage, removeLocalStorage, setLocalStorage } from '@/utils';
 
 interface AuthStore {
   user: CurrentUser | null;
@@ -9,13 +10,14 @@ interface AuthStore {
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
-  user: getLocalStorage<CurrentUser>("currentUser") || null,
+  user: getLocalStorage<CurrentUser>('currentUser') || null,
   setUser: (user) => {
-    setLocalStorage("currentUser", user);
+    setLocalStorage('currentUser', user);
     set({ user });
   },
   logout: () => {
+    console.log('logout');
     set({ user: null });
-    removeLocalStorage("currentUser");
+    removeLocalStorage('currentUser');
   },
 }));

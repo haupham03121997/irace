@@ -1,6 +1,6 @@
-import { ProfileLayout } from "@/layouts/ProfileLayout";
 import React from "react";
 
+import { ProfileLayout } from "@/layouts";
 interface RootProfileLayoutProps {
   children: React.ReactNode;
 }

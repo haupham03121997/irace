@@ -1,7 +1,7 @@
-import { CircleX, Eye, EyeOff } from "lucide-react";
-import * as React from "react";
+import { CircleX, Eye, EyeOff } from 'lucide-react';
+import * as React from 'react';
 
-import { cn } from "@/libs/utils";
+import { cn } from '@/libs/utils';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   startAdornment?: React.ReactNode;
@@ -18,8 +18,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     const handleClear = () => {
       if (inputRef.current) {
-        inputRef.current.value = "";
-        const event = new Event("input", { bubbles: true });
+        inputRef.current.value = '';
+        const event = new Event('input', { bubbles: true });
         inputRef.current.dispatchEvent(event);
         inputRef.current?.focus();
       }
@@ -28,21 +28,29 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="flex flex-col gap-1">
         {label && (
-          <label className={cn("block text-sm font-medium text-black", classNameLabel)}>
-            {label} {"    "} {props?.required && <span className="text-red-500">*</span>}
+          <label className={cn('block text-sm font-medium text-black', classNameLabel)}>
+            {label} {'    '} {props?.required && <span className="text-red-500">*</span>}
           </label>
         )}
         <div className="flex items-center relative">
-          {startAdornment}
+          {startAdornment &&
+            React.cloneElement(startAdornment as React.ReactElement, {
+              className: cn(
+                'absolute left-2 top-1/2 -translate-y-1/2',
+                (startAdornment as React.ReactElement).props.className
+              ),
+            })}
           <input
-            type={showPassword ? "text" : type}
+            type={showPassword ? 'text' : type}
             className={cn(
-              "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+              'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 ',
               className,
-              type === "password" && "pr-8"
+              type === 'password' && 'pr-8',
+              startAdornment && 'pl-8',
+              endAdornment && 'pr-10'
             )}
             ref={(node) => {
-              if (typeof ref === "function") {
+              if (typeof ref === 'function') {
                 ref(node);
               } else if (ref) {
                 ref.current = node;
@@ -51,19 +59,24 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             }}
             {...props}
           />
+
           {allowClear && (
             <span
-              className="inline-block mr-3 cursor-pointer"
+              className={cn(
+                'absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer',
+                'hidden' && !!inputRef.current?.value,
+                endAdornment && 'right-8'
+              )}
               onClick={() => {
                 handleClear();
-                props.onChange && props.onChange({ target: { value: "" } } as React.ChangeEvent<HTMLInputElement>);
+                props.onChange && props.onChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>);
               }}
             >
-              <CircleX size={18} />
+              <CircleX size={12} />
             </span>
           )}
-          {type === "password" && (
-            <span className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer">
+          {type === 'password' && (
+            <span className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer">
               {showPassword ? (
                 <Eye className="stroke-gray-500" size={18} onClick={() => setShowPassword(false)} />
               ) : (
@@ -71,12 +84,18 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               )}
             </span>
           )}
-          {endAdornment}
+          {endAdornment &&
+            React.cloneElement(endAdornment as React.ReactElement, {
+              className: cn(
+                'absolute right-2 top-1/2 -translate-y-1/2',
+                (endAdornment as React.ReactElement).props.className
+              ),
+            })}
         </div>
       </div>
     );
   }
 );
-Input.displayName = "Input";
+Input.displayName = 'Input';
 
 export { Input };
