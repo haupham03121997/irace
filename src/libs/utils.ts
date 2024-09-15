@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function randomTime() {
-  return Math.floor(Math.random() * 1000) + 100;
+  return Math.floor(Math.random() * 500) + 500;
 }
 
 export function chunkArray(array: any[], size: number) {

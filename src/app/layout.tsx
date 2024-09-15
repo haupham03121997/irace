@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import { Noto_Sans as FontSans } from 'next/font/google';
-import './globals.css';
+import Head from 'next/head';
 
+import { ErrorBoundary } from '@/components/error-boundary';
 import { SEO_TAG } from '@/constants/seo';
 import AppProvider from '@/libs/app-provider';
 import { cn } from '@/libs/utils';
-import Head from 'next/head';
+
 import { envConfig } from '../../config';
+import './globals.css';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -19,12 +21,11 @@ export const metadata: Metadata = {
 };
 
 console.log(envConfig);
-
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode;
-}>) {
+}
+
+export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="en" suppressContentEditableWarning>
       <Head>
@@ -35,7 +36,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </Head>
       <body className={cn('min-h-screen font-sans antialiased', fontSans.variable)} suppressHydrationWarning>
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+          <ErrorBoundary>{children}</ErrorBoundary>
+        </AppProvider>
       </body>
     </html>
   );

@@ -1,6 +1,8 @@
+'use client';
 import { create } from 'zustand';
 
 import { CurrentUser } from '@/interfaces/auth';
+import { isClient } from '@/libs/utils';
 import { getLocalStorage, removeLocalStorage, setLocalStorage } from '@/utils';
 
 interface AuthStore {
@@ -10,7 +12,7 @@ interface AuthStore {
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
-  user: getLocalStorage<CurrentUser>('currentUser') || null,
+  user: (isClient() && getLocalStorage<CurrentUser>('currentUser')) || null,
   setUser: (user) => {
     setLocalStorage('currentUser', user);
     set({ user });
