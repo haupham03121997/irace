@@ -1,7 +1,8 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
 
-import { NavItem } from "../nav-item";
+import { PATH } from '@/constants/path';
+import { NavItem } from '../nav-item';
 
 interface NavProps {}
 
@@ -12,13 +13,13 @@ const Nav: React.FC<NavProps> = () => {
         <ul className="flex items-center gap-8  bg-white ">
           <NavItem
             label="Mua Vé Sự Kiện"
-            href={"/"}
+            href={'/'}
             hasDropdown
             menuItems={[
-              { label: "  Virtual Race", href: "#" },
+              { label: '  Virtual Race', href: '#' },
               {
-                label: "Sự kiện tại Việt Nam",
-                href: "#",
+                label: 'Sự kiện tại Việt Nam',
+                href: '#',
               },
             ]}
           />
@@ -27,11 +28,11 @@ const Nav: React.FC<NavProps> = () => {
             label="Dịch vụ"
             hasDropdown
             menuItems={[
-              { label: "Bán Vé Sự Kiện", href: "#" },
-              { label: "Tìm Hình Sự Kiện", href: "#" },
-              { label: " Tổ Chức Sự Kiện", href: "#" },
-              { label: " Kiếm Tiền cùng iRace.vn", href: "#" },
-              { label: " Sản Xuất Vật Phẩm", href: "#" },
+              { label: 'Bán Vé Sự Kiện', href: '#' },
+              { label: 'Tìm Hình Sự Kiện', href: '#' },
+              { label: ' Tổ Chức Sự Kiện', href: '#' },
+              { label: ' Kiếm Tiền cùng iRace.vn', href: '#' },
+              { label: ' Sản Xuất Vật Phẩm', href: '#' },
             ]}
           />
           <NavItem
@@ -39,11 +40,11 @@ const Nav: React.FC<NavProps> = () => {
             label="Thông tin"
             hasDropdown
             menuItems={[
-              { label: "Về iRace", href: "#" },
-              { label: "Báo chí Việt", href: "#" },
-              { label: "Hỏi Đáp", href: "#" },
-              { label: "Hướng dẫn sử dụng", href: "#" },
-              { label: "Kiến thức chạy bộ", href: "#" },
+              { label: 'Về iRace', href: '#' },
+              { label: 'Báo chí Việt', href: '#' },
+              { label: 'Hỏi Đáp', href: '#' },
+              { label: 'Hướng dẫn sử dụng', href: '#' },
+              { label: 'Kiến thức chạy bộ', href: '#' },
             ]}
           />
 
@@ -52,10 +53,12 @@ const Nav: React.FC<NavProps> = () => {
             label="Shop Thể Thao"
             hasDropdown
             menuItems={[
-              { label: "Dinh Dưỡng", href: "#" },
-              { label: "Phụ Kiện", href: "#" },
+              { label: 'Dinh Dưỡng', href: '#' },
+              { label: 'Phụ Kiện', href: '#' },
             ]}
           ></NavItem>
+
+          <NavItem href={PATH.TICKET} label="Ticket"></NavItem>
         </ul>
       </nav>
     </>
